@@ -1,0 +1,39 @@
+=====
+1.
+=====
+5x2
+6 slaves: Average 1:30
+12 slaveS: Average 1:37
+
+4x3
+12 slaves: Average 43mins
+
+=====
+2.
+=====
+5x2
+6 slaves: 0.276MB/s
+12 slaves: 0.256MB/s
+
+4x3
+12 slaves: 1.461MB/s
+
+=====
+3.
+=====
+For 5x2, Speedup is not very obvious, somehow 12 slaves is even slower by several seconds.
+However, for 4x3 puzzle, which is much larger, 12 slaves do speedup the process a lot.
+Therefore, Spark does parallelizes my work and it should be a strong scaling since for a puzzle with large state spaces (like 4x3), we have a fixed problem size and with 12 slaves, the process do run a lot faster than with 6 slaves. 
+
+=====
+4.
+=====
+With 6 slaves: 
+(90s) / 3600 * 6 * $0.68 / (0.02484GB) = $4.1GB
+With 12 slaves:
+(97s + 2580s) / 3600 * 12 * $0.68 / (0.02484GB + 3.77GB) = $1.59/GB
+
+=====
+5.
+=====
+Around $45

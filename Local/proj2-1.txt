@@ -1,0 +1,14 @@
+Partner 1 Name: Shan Huang
+Partner 1 Login: cs61c-aaa
+
+Partner 2 Name: Ruiting Ye
+Partner 2 Login: cs61c-auv
+
+1.
+Not all permutations are solutions. There are some position configurations which we will never reach from level 0 (the solution state.) For example, just from the solution position given on the website, ('1', '3', '2', '-') is also a solution but it will not be in our search tree. Therefore, as the size of puzzle gets larger, all the permutations will also gets larger and constains lots of such invalid solutions and thus takes more memory and increases the lookup time.
+
+2.
+Start from any valid solution state, then do map reduce just like what we did in the code. However, every time we call children, we need to check if the current state is a solution state by calling solution(), if yes, set the level to that state to 0 and it's children as level + 1, which is 1. Everything else are pretty much stay the same.
+
+3.
+We store the least stone(s) left on the board can be achieved from this postion. Instead of starting from a single solution, we need to iterate through all the "deadend" states (a position configuration which has no valid move anymore). Instead of have (postion, level) as KV pairs, we should use (position, least possible stones left on the board can be achieved) as KV pairs. Everything else should stay pretty much the same. Yes, it does change the memory required because we don't really have one solution state, we have multiple states which are "deadend states" can be considered as solutions that depend on the initial states given to the player.
